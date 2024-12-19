@@ -1,5 +1,5 @@
 # Anime Tracker CLI Application
-*By Sean Daniel Munene
+By Sean Daniel Munene
 ## Description
 The **Anime Tracker CLI Application** is a command-line interface tool that allows users to manage their anime watchlist. Built with Python and SQLAlchemy, the app lets users add, list, and organize anime, associate them with tags, and manage users, making it a perfect solution for anime enthusiasts who want to track their watching habits.
 
@@ -132,6 +132,16 @@ anime-tracker/
 
 ## License
 This project is licensed under the MIT License.
+
+
+## Technologies Used
+The Anime Tracker CLI Application utilizes the following technologies:
+
+-Python: The primary programming language for building the application.
+-Click: A Python library for creating a user-friendly command-line interface.
+-SQLAlchemy: An Object-Relational Mapping (ORM) library for database interaction.
+-SQLite: A lightweight, file-based relational database for data storage.
+-Virtual Environment: Ensures isolated dependency management for the project.
 
 ## Acknowledgments
 Special thanks to [Madam Beatrice Wambui] for guidance and support.
