@@ -1,5 +1,5 @@
 # Anime Tracker CLI Application
-*By Sean Daniel Munene
+By Sean Daniel Munene
 ## Description
 The **Anime Tracker CLI Application** is a command-line interface tool that allows users to manage their anime watchlist. Built with Python and SQLAlchemy, the app lets users add, list, and organize anime, associate them with tags, and manage users, making it a perfect solution for anime enthusiasts who want to track their watching habits.
 
