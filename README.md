@@ -133,15 +133,14 @@ anime-tracker/
 ## License
 This project is licensed under the MIT License.
 
-
 ## Technologies Used
 The Anime Tracker CLI Application utilizes the following technologies:
 
--Python: The primary programming language for building the application.
--Click: A Python library for creating a user-friendly command-line interface.
--SQLAlchemy: An Object-Relational Mapping (ORM) library for database interaction.
--SQLite: A lightweight, file-based relational database for data storage.
--Virtual Environment: Ensures isolated dependency management for the project.
+Python: The primary programming language for building the application.
+Click: A Python library for creating a user-friendly command-line interface.
+SQLAlchemy: An Object-Relational Mapping (ORM) library for database interaction.
+SQLite: A lightweight, file-based relational database for data storage.
+Virtual Environment: Ensures isolated dependency management for the project.
 
 ## Acknowledgments
 Special thanks to [Madam Beatrice Wambui] for guidance and support.
