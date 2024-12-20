@@ -108,6 +108,16 @@ One can delete a tag from the database by using it's ID
 ```bash
 Example: delete-tag 1
 ```
+## Assistance
+If you need any assistance while in the command line, type in;
+```bash
+--help
+```
+
+If you want to exit the loop type in;
+```bash
+exit
+```
 
 ## Project Structure
 ```
