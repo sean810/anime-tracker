@@ -92,5 +92,56 @@ def list_animes():
     for anime in animes:
         click.echo(f"{anime.id}: {anime.title} - {anime.genre} ({anime.total_episodes} episodes)")
 
+# Command to delete a user
+@cli.command()
+@click.argument("user_id", type=int)
+def delete_user(user_id):
+    """Delete a user by their ID."""
+    db = next(get_db())
+    
+    user = db.query(User).filter(User.id == user_id).first()
+    if not user:
+        click.echo(f"User with ID {user_id} not found.")
+        return
+
+    # Delete the user and their associated animes
+    db.delete(user)
+    db.commit()
+    click.echo(f"User with ID {user_id} and their associated anime have been deleted successfully.")
+
+# Command to delete a tag
+@cli.command()
+@click.argument("tag_id", type=int)
+def delete_tag(tag_id):
+    """Delete a tag by its ID."""
+    db = next(get_db())
+    
+    tag = db.query(Tag).filter(Tag.id == tag_id).first()
+    if not tag:
+        click.echo(f"Tag with ID {tag_id} not found.")
+        return
+
+    # Delete the tag
+    db.delete(tag)
+    db.commit()
+    click.echo(f"Tag with ID {tag_id} has been deleted successfully.")
+
+# Command to delete an anime
+@cli.command()
+@click.argument("anime_id", type=int)
+def delete_anime(anime_id):
+    """Delete an anime by its ID."""
+    db = next(get_db())
+    
+    anime = db.query(Anime).filter(Anime.id == anime_id).first()
+    if not anime:
+        click.echo(f"Anime with ID {anime_id} not found.")
+        return
+
+    # Delete the anime
+    db.delete(anime)
+    db.commit()
+    click.echo(f"Anime with ID {anime_id} has been deleted successfully.")
+
 if __name__ == "__main__":
     cli()
