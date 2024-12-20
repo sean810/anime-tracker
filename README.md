@@ -91,6 +91,24 @@ Example output:
 2: One Piece - Adventure (1000 episodes)
 ```
 
+## Delete Anime
+One can delete a specific anime from the database by using it's ID
+```bash
+python -m lib.cli delete-anime 1
+```
+
+## Delete user
+One can delete a specific user from the database by using it's ID
+```bash
+python -m lib.cli delete-user 1
+```
+
+## Delete tag
+One can delete a tag from the database by using it's ID
+```bash
+python -m lib.cli delete-tag 2
+```
+
 ## Project Structure
 ```
 anime-tracker/
