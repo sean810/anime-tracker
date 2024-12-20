@@ -47,17 +47,17 @@ To run the Anime Tracker app, ensure you have the following installed:
 To interact with the Anime Tracker app, use the CLI commands which will be provided
 to you once you do:
 ```bash
-python -m lib.cli
+python -m lib.cli or python lib/cli.py
 ```
 
 ### Add a User
 Add a new user to the database.
 ```bash
-python -m lib.cli add-user "username"
+Example: add-user "username"
 ```
 Example:
 ```bash
-python -m lib.cli add-user "Sean"
+Example: add-user "Sean"
 ```
 
 ### Add an Anime
@@ -67,23 +67,23 @@ python -m lib.cli add-anime "title" "genre" total_episodes --user_id USER_ID
 ```
 Example:
 ```bash
-python -m lib.cli add-anime "Naruto" "Action" 500 --user_id 1
+Example: add-anime "Naruto" "Action" 500 --user_id 1
 ```
 
 ### Add a Tag
 Add a tag to an anime.
 ```bash
-python -m lib.cli add-tag ANIME_ID "tag_name"
+Example: add-tag ANIME_ID "tag_name"
 ```
 Example:
 ```bash
-python -m lib.cli add-tag 1 "Action"
+Example: add-tag 1 "Action"
 ```
 
 ### List All Animes
 View a list of all anime in the database.
 ```bash
-python -m lib.cli list-animes
+Example: list-animes
 ```
 Example output:
 ```
@@ -94,19 +94,19 @@ Example output:
 ## Delete Anime
 One can delete a specific anime from the database by using it's ID
 ```bash
-python -m lib.cli delete-anime 1
+Example: delete-anime 1
 ```
 
 ## Delete user
 One can delete a specific user from the database by using it's ID
 ```bash
-python -m lib.cli delete-user 1
+Example: delete-user 1
 ```
 
 ## Delete tag
 One can delete a tag from the database by using it's ID
 ```bash
-python -m lib.cli delete-tag 2
+Example: delete-tag 1
 ```
 
 ## Project Structure
@@ -138,7 +138,7 @@ anime-tracker/
    - Each command interacts with the database via SQLAlchemy sessions.
 
 3. **User Workflow**:
-   - Users can be added first.
+   - Users should be added first.
    - Anime are added and associated with a user.
    - Tags can be applied to anime for categorization.
 

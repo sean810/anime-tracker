@@ -1,5 +1,13 @@
 import click
-from sqlalchemy.orm import Session
+import sys
+import os
+
+# Add the project root directory to sys.path so the 'lib' package can be found
+if __name__ == "__main__":
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    if project_root not in sys.path:
+        sys.path.insert(0, project_root)
+
 from lib.database import SessionLocal, create_db
 from lib.models.anime import Anime
 from lib.models.tag import Tag
@@ -18,7 +26,7 @@ def get_db():
 
 @click.group()
 def cli():
-    """Anime Watchlist Tracker CLI"""
+    """Anime Watchlist Tracker CLI."""
     pass
 
 # Command to create the database tables
@@ -72,14 +80,20 @@ def add_tag(anime_id, tag_name):
 
     tag = db.query(Tag).filter(Tag.name == tag_name).first()
     if not tag:
+        # Create the tag if it doesn't exist
         tag = Tag(name=tag_name)
         db.add(tag)
         db.commit()
         db.refresh(tag)
-
-    anime.tags.append(tag)
-    db.commit()
-    click.echo(f"Tag '{tag.name}' added to anime '{anime.title}'.")
+        click.echo(f"Tag '{tag.name}' created and added to anime '{anime.title}'.")
+    else:
+        # Check if the tag is already associated with the anime
+        if tag not in anime.tags:
+            anime.tags.append(tag)
+            db.commit()
+            click.echo(f"Tag '{tag.name}' added to anime '{anime.title}'.")
+        else:
+            click.echo(f"Tag '{tag.name}' is already associated with anime '{anime.title}'.")
 
 # Command to list all animes
 @cli.command()
@@ -143,5 +157,42 @@ def delete_anime(anime_id):
     db.commit()
     click.echo(f"Anime with ID {anime_id} has been deleted successfully.")
 
+# Command to exit the loop
+@cli.command()
+def exit():
+    """Exit the CLI loop."""
+    click.echo("Exiting CLI...")
+    sys.exit()
+
+# The interactive loop to simulate "staying" in the CLI until 'exit' command is given
+from click.testing import CliRunner
+
+def interactive_loop():
+    runner = CliRunner()  # Using CliRunner to simulate command execution
+
+    # List all available commands
+    click.echo("Available commands:")
+    for command in cli.commands:
+        click.echo(f"- {command}")
+
+    while True:
+        try:
+            command = input("Enter command (type 'exit' to quit): ").strip()
+            if command == 'exit':
+                break
+
+            # Run the command using the CliRunner
+            result = runner.invoke(cli, command.split())  # Pass the split command list to CliRunner
+
+            # Print the result
+            if result.exit_code == 0:
+                click.echo(result.output)
+            else:
+                click.echo(f"Error: {result.output}")
+
+        except KeyboardInterrupt:
+            print("\nExiting CLI...")
+            break
+
 if __name__ == "__main__":
-    cli()
+    interactive_loop()
